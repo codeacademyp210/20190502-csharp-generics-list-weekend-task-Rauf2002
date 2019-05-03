@@ -17,9 +17,10 @@ namespace User_Employee
             InitializeComponent();
         }
 
+
+        Employee e1 = new Employee();
         private void AddEmployee(object sender, EventArgs e)
         {
-            Employee e1 = new Employee();
             e1.Name = nameBox.Text;
             e1.Surname = surnameBox.Text;
             e1.Email = emailBox.Text;
@@ -35,6 +36,19 @@ namespace User_Employee
                     ((TextBox)c).Text = String.Empty;
                 }
             }
+
+            //void UpdateRow()
+            //{   
+            //    for(int i = 0; i < empTable.SelectedRows.Count; i++)
+            //    {
+            //        DataGridViewRow newRow = empTable.SelectedRows[i];
+            //        newRow.Cells[1].Value = nameBox.Text;
+            //        newRow.Cells[2].Value = surnameBox.Text;
+            //        newRow.Cells[3].Value = emailBox.Text;
+            //        newRow.Cells[4].Value = positionBox.Text;
+            //        newRow.Cells[5].Value = salaryBox.Text;
+            //    }
+            //}
         }
         private void DeleteRow(object sender, EventArgs e)
         {
