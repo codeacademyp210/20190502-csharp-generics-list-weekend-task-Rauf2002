@@ -50,6 +50,7 @@
             this.positionCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salaryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delete = new System.Windows.Forms.Button();
+            this.update = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empTable)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +63,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.update);
             this.panel1.Controls.Add(this.add);
             this.panel1.Controls.Add(this.salaryBox);
             this.panel1.Controls.Add(this.salary);
@@ -170,6 +172,9 @@
             // 
             // empTable
             // 
+            this.empTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.empTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.empTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idCol,
@@ -182,7 +187,7 @@
             this.empTable.Name = "empTable";
             this.empTable.Size = new System.Drawing.Size(445, 341);
             this.empTable.TabIndex = 1;
-            this.empTable.SelectionChanged += new System.EventHandler(this.EditRow);
+            this.empTable.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.EditRow);
             // 
             // idCol
             // 
@@ -230,6 +235,17 @@
             this.delete.UseVisualStyleBackColor = true;
             this.delete.Click += new System.EventHandler(this.DeleteRow);
             // 
+            // update
+            // 
+            this.update.Location = new System.Drawing.Point(68, 163);
+            this.update.Name = "update";
+            this.update.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.update.Size = new System.Drawing.Size(88, 29);
+            this.update.TabIndex = 7;
+            this.update.Text = "Yenilə";
+            this.update.UseVisualStyleBackColor = true;
+            this.update.Click += new System.EventHandler(this.updateRow);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,6 +286,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn emailCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn positionCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn salaryCol;
+        private System.Windows.Forms.Button update;
     }
 }
 

@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,17 +19,19 @@ namespace User_Employee
             InitializeComponent();
         }
 
-
         Employee e1 = new Employee();
+
         private void AddEmployee(object sender, EventArgs e)
         {
+
+
             e1.Name = nameBox.Text;
             e1.Surname = surnameBox.Text;
             e1.Email = emailBox.Text;
             e1.Position = positionBox.Text;
             e1.Salary = Convert.ToDouble(salaryBox.Text);
 
-            empTable.Rows.Add(e1.CountId(),e1.Name,e1.Surname,e1.Email,e1.Position,e1.Salary);
+            empTable.Rows.Add(e1.CountId(), e1.Name, e1.Surname, e1.Email, e1.Position, e1.Salary);
 
             foreach (var c in panel1.Controls)
             {
@@ -36,20 +40,8 @@ namespace User_Employee
                     ((TextBox)c).Text = String.Empty;
                 }
             }
-
-            //void UpdateRow()
-            //{   
-            //    for(int i = 0; i < empTable.SelectedRows.Count; i++)
-            //    {
-            //        DataGridViewRow newRow = empTable.SelectedRows[i];
-            //        newRow.Cells[1].Value = nameBox.Text;
-            //        newRow.Cells[2].Value = surnameBox.Text;
-            //        newRow.Cells[3].Value = emailBox.Text;
-            //        newRow.Cells[4].Value = positionBox.Text;
-            //        newRow.Cells[5].Value = salaryBox.Text;
-            //    }
-            //}
         }
+
         private void DeleteRow(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item in this.empTable.SelectedRows)
@@ -58,7 +50,7 @@ namespace User_Employee
             }
         }
 
-        private void EditRow(object sender, EventArgs e)
+        private void EditRow(object sender, DataGridViewCellMouseEventArgs e)
         {
             foreach (DataGridViewRow row in empTable.SelectedRows)
             {
@@ -67,6 +59,19 @@ namespace User_Employee
                 emailBox.Text = row.Cells[3].Value.ToString();
                 positionBox.Text = row.Cells[4].Value.ToString();
                 salaryBox.Text = row.Cells[5].Value.ToString();
+            }
+        }
+
+        private void updateRow(object sender, EventArgs e)
+        {
+            for (int i = 0; i < empTable.SelectedRows.Count; i++)
+            {
+                DataGridViewRow newRow = empTable.SelectedRows[i];
+                newRow.Cells[1].Value = nameBox.Text;
+                newRow.Cells[2].Value = surnameBox.Text;
+                newRow.Cells[3].Value = emailBox.Text;
+                newRow.Cells[4].Value = positionBox.Text;
+                newRow.Cells[5].Value = salaryBox.Text;
             }
         }
     }
